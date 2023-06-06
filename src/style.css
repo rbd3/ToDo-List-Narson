@@ -1,0 +1,35 @@
+body {
+  background-color: #f1f2f5;
+}
+
+.tasks {
+  width: 40%;
+  height: auto;
+  max-height: 300px;
+  background-color: #fff;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.08);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 {
+  margin-left: 7.5%;
+}
+
+.display {
+  display: flex;
+  margin-left: 450px;
+  margin-top: -15px;
+  cursor: pointer;
+}
