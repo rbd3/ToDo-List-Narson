@@ -1,9 +1,9 @@
-import TODoTasks from "./tasks.js";
+import TODoTasks from './tasks.js';
 
 const task = document.getElementsByClassName('tasks')[0];
 const tasks = new TODoTasks();
 
-const TaskList = () => {
+const TaskList = (ex) => {
   for (let i = 0; i < tasks.tasks.length; i += 1) {
     const card = document.createElement('div');
     card.classList.add('card-body');
@@ -16,6 +16,6 @@ const TaskList = () => {
     task.appendChild(card);
   }
   localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
-}
+};
 
 export default TaskList;
