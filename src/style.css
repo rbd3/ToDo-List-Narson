@@ -33,3 +33,12 @@ h2 {
   margin-top: -15px;
   cursor: pointer;
 }
+
+.display-rotate {
+  display: flex;
+  margin-left: 455px;
+  margin-top: -20px;
+  margin-bottom: 8%;
+  cursor: pointer;
+  color: #959697;
+}

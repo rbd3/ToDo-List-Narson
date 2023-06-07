@@ -1,5 +1,5 @@
 export default class TODoTasks {
-  constructor () {
+  constructor() {
     this.tasks = [
       {
         id: 0,
