@@ -1,4 +1,4 @@
 import './style.css';
-import TaskList from '../modules/taskFunction.js';
+import taskList from '../modules/taskFunction.js';
 
-TaskList();
+taskList();
