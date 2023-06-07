@@ -74,7 +74,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/rbd3/To-DO-List.git
+  git clone https://github.com/rbd3/To-DO-List-Narson.git
 ```
 
 ### Install
@@ -83,7 +83,7 @@ Install this project with:
 
 ```sh
   cd To DO List
-  npms install
+  npm install
 ```
 
 it will install the required package for running the project
@@ -97,7 +97,7 @@ To use them, execute the following command:
 ```sh
     npx hint .
     npx stylelint "**/*.{css,scss}"
-    px eslint.
+    npx eslint.
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -129,7 +129,7 @@ To use them, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/rbd3/To-Do-List/issues).
+Feel free to check the [issues page](https://github.com/rbd3/To-Do-List-Narson/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,7 +138,7 @@ Feel free to check the [issues page](https://github.com/rbd3/To-Do-List/issues).
 ## ⭐️ Show your support <a name="support"></a>
 
 
-If you like this project you can share this project to your friend (https://github.com/rbd3/To-DO-List.git).
+If you like this project you can share this project to your friend (https://github.com/rbd3/To-DO-List-Narson.git).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
