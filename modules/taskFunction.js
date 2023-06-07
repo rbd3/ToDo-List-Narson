@@ -3,7 +3,7 @@ import TODoTasks from './tasks.js';
 const task = document.getElementsByClassName('tasks')[0];
 const tasks = new TODoTasks();
 
-const TaskList = (ex) => {
+const TaskList = () => {
   for (let i = 0; i < tasks.tasks.length; i += 1) {
     const card = document.createElement('div');
     card.classList.add('card-body');
