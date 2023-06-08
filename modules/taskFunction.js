@@ -35,7 +35,7 @@ const taskList = () => {
     const threeDotsIcon = liElement.querySelector('.fa-ellipsis-v');
     // Add a click event listener to the three dots icon
     threeDotsIcon.addEventListener('click', () => {
-      editTaskDescription(task.id, liElement);
+      editTaskDescription(task.id, liElement, taskList);
     });
 
     ulElement.appendChild(liElement);
@@ -77,7 +77,7 @@ addNew.addEventListener('keydown', (event) => {
 });
 
 
-function editTaskDescription(taskId, liElement) {
+function editTaskDescription(taskId, liElement, taskList) {
   const taskDescriptionElement = liElement.querySelector('.task-description');
   const inputElement = document.createElement('input');
   inputElement.type = 'text';
@@ -95,7 +95,7 @@ function editTaskDescription(taskId, liElement) {
 
   taskDescriptionElement.replaceWith(inputElement);
   inputElement.focus();
-};
+}
 
 window.addEventListener('DOMContentLoaded', () => {
   taskList();
