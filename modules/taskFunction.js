@@ -1,15 +1,15 @@
 import TODoTasks from './tasks.js';
 
 const task = document.getElementsByClassName('tasks')[0];
-let addNew = document.createElement('input');
-addNew.type= 'text';
-addNew.placeholder= 'Add to your list...';
+const addNew = document.createElement('input');
+addNew.type = 'text';
+addNew.placeholder = 'Add to your list...';
 addNew.classList.add('addNew');
 task.appendChild(addNew);
-let ulElement = document.createElement('ul');
-ulElement.classList.add("card-sub");
+const ulElement = document.createElement('ul');
+ulElement.classList.add('card-sub');
 
-var tasks = new TODoTasks();
+let tasks = new TODoTasks();
 
 // Clear existing tasks
 const clearTaskList = () => {
@@ -25,12 +25,19 @@ const taskList = () => {
 
   tasks.tasks.forEach((task) => {
     const liElement = document.createElement('li');
-    liElement.dataset.taskId = task.id; // Add the task id as a data attribute
+    liElement.dataset.taskId = task.id;
     liElement.innerHTML = `
       <input type="checkbox" ${task.completed ? 'checked' : ''}>
-      ${task.description}
+      <span class="task-description">${task.description}</span>
       <i class="fas fa-ellipsis-v display"></i>
     `;
+
+    // Get the three dots icon within the liElement
+    const threeDotsIcon = liElement.querySelector('.fa-ellipsis-v');
+    // Add a click event listener to the three dots icon
+    threeDotsIcon.addEventListener('click', () => {
+      editTaskDescription(task.id, liElement);
+    });
 
     ulElement.appendChild(liElement);
   });
@@ -39,10 +46,10 @@ const taskList = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
 };
 
-const buttonClear = document.createElement("button");
+const buttonClear = document.createElement('button');
 buttonClear.type = 'button';
-buttonClear.classList.add("button-clear");
-buttonClear.textContent  = 'Clear All Completed!';
+buttonClear.classList.add('button-clear');
+buttonClear.textContent = 'Clear All Completed!';
 document.body.appendChild(buttonClear);
 
 const addTask = () => {
@@ -63,7 +70,6 @@ const addTask = () => {
     }
   }
 };
-
 
 addNew.addEventListener('keydown', (event) => {
   if (event.keyCode === 13) {
@@ -95,5 +101,25 @@ const clearCompletedTasks = () => {
 };
 
 buttonClear.addEventListener('click', clearCompletedTasks);
+
+const editTaskDescription = (taskId, liElement) => {
+  const taskDescriptionElement = liElement.querySelector('.task-description');
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = taskDescriptionElement.textContent;
+
+  inputElement.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      const newDescription = inputElement.value.trim();
+      const success = tasks.editDescription(taskId, newDescription);
+      if (success) {
+        taskList();
+      }
+    }
+  });
+
+  taskDescriptionElement.replaceWith(inputElement);
+  inputElement.focus();
+};
 
 export default taskList;
