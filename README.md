@@ -14,7 +14,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  <!-- - [🚀 Live Demo](#live-demo) -->
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -56,12 +55,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
- ## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Live Demo Link]()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -81,7 +74,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/rbd3/To-DO-List.git
+  git clone https://github.com/rbd3/To-DO-List-Narson.git
 ```
 
 ### Install
@@ -90,7 +83,7 @@ Install this project with:
 
 ```sh
   cd To DO List
-  npms install
+  npm install
 ```
 
 it will install the required package for running the project
@@ -104,7 +97,7 @@ To use them, execute the following command:
 ```sh
     npx hint .
     npx stylelint "**/*.{css,scss}"
-    npx eslint .
+    npx eslint.
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -118,7 +111,7 @@ To use them, execute the following command:
 
 - GitHub: [@rbd3](https://github.com/rbd3)
 - Twitter: [@Narson321](https://twitter.com/@Narson321)
-- LinkedIn: [@Andry Narson Rabedesana](https://linkedin.com/in/andry-narson-rabedesana-15b8b4248)
+- LinkedIn [@Andry Narson Rabedesana](https://linkedin.com/in/andry-narson-rabedesana-15b8b4248)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,7 +129,7 @@ To use them, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/rbd3/To-Do-List/issues).
+Feel free to check the [issues page](https://github.com/rbd3/To-Do-List-Narson/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -145,15 +138,15 @@ Feel free to check the [issues page](https://github.com/rbd3/To-Do-List/issues).
 ## ⭐️ Show your support <a name="support"></a>
 
 
-If you like this project you can share this project to your friend (https://github.com/rbd3/To-DO-List.git).
+If you like this project you can share this project to your friend (https://github.com/rbd3/To-DO-List-Narson.git).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
+## 🙏 Acknowledgments <a name="acknowledgments"></a>
 
-I would like to thank microverse review team
+I would like to thank the Microverse review team
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
