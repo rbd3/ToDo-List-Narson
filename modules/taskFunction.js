@@ -57,7 +57,6 @@ const taskList = () => {
     const trashIcon = liElement.querySelector('.fa-trash-can');
     const checkbox = liElement.querySelector('input[type="checkbox"]');
 
-    // Add a click event listener to the three dots icon
     threeDotsIcon.addEventListener('click', () => {
       editTaskDescription(task.id, liElement, taskList);
     });
