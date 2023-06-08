@@ -74,7 +74,7 @@ document.body.appendChild(buttonClear);
 const addTask = () => {
   const newTaskDescription = addNew.value.trim();
   if (newTaskDescription !== '') {
-    const existingTask = tasks.tasks.find(task => task.description === newTaskDescription);
+    const existingTask = tasks.tasks.find((task) => task.description === newTaskDescription);
     if (!existingTask) {
       const lastTaskId = tasks.tasks.length > 0 ? tasks.tasks[tasks.tasks.length - 1].id : -1;
       const newTask = {
