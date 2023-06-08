@@ -19,7 +19,6 @@ const clearTaskList = () => {
   }
 };
 
-
 function editTaskDescription(taskId, liElement, taskList) {
   const taskDescriptionElement = liElement.querySelector('.task-description');
   const inputElement = document.createElement('input');
@@ -39,7 +38,6 @@ function editTaskDescription(taskId, liElement, taskList) {
   taskDescriptionElement.replaceWith(inputElement);
   inputElement.focus();
 }
-
 
 // Generate list
 const taskList = () => {
