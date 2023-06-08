@@ -19,6 +19,28 @@ const clearTaskList = () => {
   }
 };
 
+
+function editTaskDescription(taskId, liElement, taskList) {
+  const taskDescriptionElement = liElement.querySelector('.task-description');
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = taskDescriptionElement.textContent;
+
+  inputElement.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      const newDescription = inputElement.value.trim();
+      const success = tasks.editDescription(taskId, newDescription);
+      if (success) {
+        taskList();
+      }
+    }
+  });
+
+  taskDescriptionElement.replaceWith(inputElement);
+  inputElement.focus();
+}
+
+
 // Generate list
 const taskList = () => {
   clearTaskList();
@@ -75,27 +97,6 @@ addNew.addEventListener('keydown', (event) => {
     addTask();
   }
 });
-
-
-function editTaskDescription(taskId, liElement, taskList) {
-  const taskDescriptionElement = liElement.querySelector('.task-description');
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.value = taskDescriptionElement.textContent;
-
-  inputElement.addEventListener('keydown', (event) => {
-    if (event.keyCode === 13) {
-      const newDescription = inputElement.value.trim();
-      const success = tasks.editDescription(taskId, newDescription);
-      if (success) {
-        taskList();
-      }
-    }
-  });
-
-  taskDescriptionElement.replaceWith(inputElement);
-  inputElement.focus();
-}
 
 window.addEventListener('DOMContentLoaded', () => {
   taskList();
