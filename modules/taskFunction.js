@@ -77,7 +77,7 @@ addNew.addEventListener('keydown', (event) => {
 });
 
 
-const editTaskDescription = (taskId, liElement) => {
+function editTaskDescription(taskId, liElement) {
   const taskDescriptionElement = liElement.querySelector('.task-description');
   const inputElement = document.createElement('input');
   inputElement.type = 'text';
