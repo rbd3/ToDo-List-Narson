@@ -11,26 +11,6 @@ ulElement.classList.add('card-sub');
 
 const tasks = new TODoTasks();
 
-const editTaskDescription = (taskId, liElement) => {
-  const taskDescriptionElement = liElement.querySelector('.task-description');
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.value = taskDescriptionElement.textContent;
-
-  inputElement.addEventListener('keydown', (event) => {
-    if (event.keyCode === 13) {
-      const newDescription = inputElement.value.trim();
-      const success = tasks.editDescription(taskId, newDescription);
-      if (success) {
-        taskList();
-      }
-    }
-  });
-
-  taskDescriptionElement.replaceWith(inputElement);
-  inputElement.focus();
-};
-
 // Clear existing tasks
 const clearTaskList = () => {
   const ulElement = task.querySelector('.card-sub');
@@ -120,5 +100,26 @@ const clearCompletedTasks = () => {
 };
 
 buttonClear.addEventListener('click', clearCompletedTasks);
+
+
+const editTaskDescription = (taskId, liElement) => {
+  const taskDescriptionElement = liElement.querySelector('.task-description');
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = taskDescriptionElement.textContent;
+
+  inputElement.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      const newDescription = inputElement.value.trim();
+      const success = tasks.editDescription(taskId, newDescription);
+      if (success) {
+        taskList();
+      }
+    }
+  });
+
+  taskDescriptionElement.replaceWith(inputElement);
+  inputElement.focus();
+};
 
 export default taskList;
