@@ -9,7 +9,28 @@ task.appendChild(addNew);
 const ulElement = document.createElement('ul');
 ulElement.classList.add('card-sub');
 
-let tasks = new TODoTasks();
+const tasks = new TODoTasks();
+
+const editTaskDescription = (taskId, liElement) => {
+  const taskDescriptionElement = liElement.querySelector('.task-description');
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = taskDescriptionElement.textContent;
+
+  inputElement.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+      const newDescription = inputElement.value.trim();
+      const success = tasks.editDescription(taskId, newDescription);
+      if (success) {
+        taskList();
+      }
+    }
+  });
+
+  taskDescriptionElement.replaceWith(inputElement);
+  inputElement.focus();
+};
+
 
 // Clear existing tasks
 const clearTaskList = () => {
@@ -32,7 +53,6 @@ const taskList = () => {
       <i class="fas fa-ellipsis-v display"></i>
     `;
 
-    // Get the three dots icon within the liElement
     const threeDotsIcon = liElement.querySelector('.fa-ellipsis-v');
     // Add a click event listener to the three dots icon
     threeDotsIcon.addEventListener('click', () => {
@@ -101,25 +121,5 @@ const clearCompletedTasks = () => {
 };
 
 buttonClear.addEventListener('click', clearCompletedTasks);
-
-const editTaskDescription = (taskId, liElement) => {
-  const taskDescriptionElement = liElement.querySelector('.task-description');
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.value = taskDescriptionElement.textContent;
-
-  inputElement.addEventListener('keydown', (event) => {
-    if (event.keyCode === 13) {
-      const newDescription = inputElement.value.trim();
-      const success = tasks.editDescription(taskId, newDescription);
-      if (success) {
-        taskList();
-      }
-    }
-  });
-
-  taskDescriptionElement.replaceWith(inputElement);
-  inputElement.focus();
-};
 
 export default taskList;
