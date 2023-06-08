@@ -14,7 +14,6 @@ export default class TODoTasks {
     this.tasks.forEach((item, index) => {
       item.id = index;
     });
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
   editDescription(id, newDescription) {

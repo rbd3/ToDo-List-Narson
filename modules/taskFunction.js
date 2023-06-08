@@ -9,31 +9,33 @@ task.appendChild(addNew);
 let ulElement = document.createElement('ul');
 ulElement.classList.add("card-sub");
 
-const tasks = new TODoTasks();
+var tasks = new TODoTasks();
 
+// Clear existing tasks
 const clearTaskList = () => {
-  // Clear existing tasks
   const ulElement = task.querySelector('.card-sub');
   if (ulElement) {
     ulElement.innerHTML = '';
   }
 };
 
+// Generate list
 const taskList = () => {
   clearTaskList();
 
-  for (let i = 0; i < tasks.tasks.length; i += 1) {
+  tasks.tasks.forEach((task) => {
     const liElement = document.createElement('li');
+    liElement.dataset.taskId = task.id; // Add the task id as a data attribute
     liElement.innerHTML = `
-      <input type="checkbox" ${tasks.tasks[i].completed ? 'checked' : ''}>
-      ${tasks.tasks[i].description}
+      <input type="checkbox" ${task.completed ? 'checked' : ''}>
+      ${task.description}
       <i class="fas fa-ellipsis-v display"></i>
     `;
 
     ulElement.appendChild(liElement);
-    task.appendChild(ulElement);
-  }
+  });
 
+  task.appendChild(ulElement);
   localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
 };
 
@@ -48,18 +50,19 @@ const addTask = () => {
   if (newTaskDescription !== '') {
     const existingTask = tasks.tasks.find(task => task.description === newTaskDescription);
     if (!existingTask) {
+      const lastTaskId = tasks.tasks.length > 0 ? tasks.tasks[tasks.tasks.length - 1].id : -1;
       const newTask = {
-        id: tasks.tasks.length,
+        id: lastTaskId + 1, // Generate a new unique id
         description: newTaskDescription,
         completed: false,
       };
       tasks.tasks.push(newTask);
+      clearTaskList();
       taskList();
       addNew.value = '';
     }
   }
 };
-
 
 
 addNew.addEventListener('keydown', (event) => {
@@ -73,22 +76,24 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 const clearCompletedTasks = () => {
-  const taskElements = task.querySelectorAll('.card-sub li');
+  const taskElements = ulElement.querySelectorAll('li');
+  const updatedTasks = [];
+
   taskElements.forEach((element) => {
     const checkbox = element.querySelector('input[type="checkbox"]');
-    if (checkbox.checked) {
-      element.remove();
+    if (!checkbox.checked) {
       const taskId = Number(element.dataset.taskId);
-      tasks.remove(taskId);
+      updatedTasks.push(tasks.tasks.find(task => task.id === taskId));
     }
   });
 
   // Update the tasks array
-  tasks.tasks = tasks.tasks.filter(task => !task.completed);
+  tasks.tasks = updatedTasks;
+  clearTaskList();
+  taskList();
+  localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
 };
 
-
 buttonClear.addEventListener('click', clearCompletedTasks);
-
 
 export default taskList;
