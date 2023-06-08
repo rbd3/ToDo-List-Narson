@@ -21,7 +21,6 @@ const clearTaskList = () => {
 
 function editTaskDescription(taskId, liElement, taskList) {
   const taskDescriptionElement = liElement.querySelector('.task-description');
-  
   if (taskDescriptionElement) {
     const inputElement = document.createElement('input');
     inputElement.type = 'text';
