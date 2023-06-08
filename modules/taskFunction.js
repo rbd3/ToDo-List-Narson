@@ -74,7 +74,7 @@ const taskList = () => {
     });
 
     trashIcon.addEventListener('click', () => {
-      const taskId = parseInt(liElement.dataset.taskId);
+      const taskId = parseInt(liElement.dataset.taskId, 10);
       tasks.remove(taskId);
       clearTaskList();
       taskList();
