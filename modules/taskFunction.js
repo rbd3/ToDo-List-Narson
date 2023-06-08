@@ -21,25 +21,26 @@ const clearTaskList = () => {
 
 function editTaskDescription(taskId, liElement, taskList) {
   const taskDescriptionElement = liElement.querySelector('.task-description');
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.value = taskDescriptionElement.textContent;
+  
+  if (taskDescriptionElement) {
+    const inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.value = taskDescriptionElement.textContent;
 
-  inputElement.addEventListener('keydown', (event) => {
-    if (event.keyCode === 13) {
-      const newDescription = inputElement.value.trim();
-      const success = tasks.editDescription(taskId, newDescription);
-      if (success) {
-        taskList();
+    inputElement.addEventListener('keydown', (event) => {
+      if (event.keyCode === 13) {
+        const newDescription = inputElement.value.trim();
+        const success = tasks.editDescription(taskId, newDescription);
+        if (success) {
+          taskList();
+        }
       }
-    }
-  });
+    });
 
-  taskDescriptionElement.replaceWith(inputElement);
-  inputElement.focus();
+    taskDescriptionElement.replaceWith(inputElement);
+    inputElement.focus();
+  }
 }
-
-// Generate list
 const taskList = () => {
   clearTaskList();
 
@@ -50,12 +51,33 @@ const taskList = () => {
       <input type="checkbox" ${task.completed ? 'checked' : ''}>
       <span class="task-description">${task.description}</span>
       <i class="fas fa-ellipsis-v display"></i>
+      <i class="fa-solid fa-trash-can ${task.completed ? '' : 'hide'}"></i>
     `;
 
     const threeDotsIcon = liElement.querySelector('.fa-ellipsis-v');
+    const trashIcon = liElement.querySelector('.fa-trash-can');
+    const checkbox = liElement.querySelector('input[type="checkbox"]');
+
     // Add a click event listener to the three dots icon
     threeDotsIcon.addEventListener('click', () => {
       editTaskDescription(task.id, liElement, taskList);
+    });
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        trashIcon.classList.remove('hide');
+        threeDotsIcon.classList.add('hide');
+      } else {
+        trashIcon.classList.add('hide');
+        threeDotsIcon.classList.remove('hide');
+      }
+    });
+
+    trashIcon.addEventListener('click', () => {
+      const taskId = parseInt(liElement.dataset.taskId);
+      tasks.remove(taskId);
+      clearTaskList();
+      taskList();
     });
 
     ulElement.appendChild(liElement);
