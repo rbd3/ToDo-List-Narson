@@ -31,7 +31,6 @@ const editTaskDescription = (taskId, liElement) => {
   inputElement.focus();
 };
 
-
 // Clear existing tasks
 const clearTaskList = () => {
   const ulElement = task.querySelector('.card-sub');
