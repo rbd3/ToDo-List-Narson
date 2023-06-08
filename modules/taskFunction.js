@@ -76,13 +76,15 @@ const addTask = () => {
   if (newTaskDescription !== '') {
     const existingTask = tasks.tasks.find((task) => task.description === newTaskDescription);
     if (!existingTask) {
-      const lastTaskId = tasks.tasks.length > 0 ? tasks.tasks[tasks.tasks.length - 1].id : -1;
       const newTask = {
-        id: lastTaskId + 1, // Generate a new unique id
+        id: tasks.tasks.length + 1,
         description: newTaskDescription,
         completed: false,
       };
       tasks.tasks.push(newTask);
+      tasks.tasks.forEach((task, index) => {
+        task.id = index + 1;
+      });
       clearTaskList();
       taskList();
       addNew.value = '';
