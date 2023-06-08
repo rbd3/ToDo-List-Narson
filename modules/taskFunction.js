@@ -108,7 +108,7 @@ const clearCompletedTasks = () => {
     const checkbox = element.querySelector('input[type="checkbox"]');
     if (!checkbox.checked) {
       const taskId = Number(element.dataset.taskId);
-      updatedTasks.push(tasks.tasks.find(task => task.id === taskId));
+      updatedTasks.push(tasks.tasks.find((task) => task.id === taskId));
     }
   });
 
