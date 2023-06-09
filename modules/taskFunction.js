@@ -60,9 +60,12 @@ const taskList = () => {
     threeDotsIcon.addEventListener('click', () => {
       editTaskDescription(task.id, liElement, taskList);
     });
-
     checkbox.addEventListener('change', () => {
-      if (checkbox.checked) {
+      const taskId = parseInt(liElement.dataset.taskId, 10);
+      const completed = checkbox.checked;
+      tasks.updateCompletionStatus(taskId, completed);
+      localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
+      if (completed) {
         trashIcon.classList.remove('hide');
         threeDotsIcon.classList.add('hide');
       } else {
@@ -70,6 +73,7 @@ const taskList = () => {
         threeDotsIcon.classList.remove('hide');
       }
     });
+    
 
     trashIcon.addEventListener('click', () => {
       const taskId = parseInt(liElement.dataset.taskId, 10);
