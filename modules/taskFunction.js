@@ -18,6 +18,12 @@ const loadTasksFromLocalStorage = () => {
   }
 };
 
+const updateTaskIds = () => {
+  tasks.tasks.forEach((task, index) => {
+    task.id = index + 1;
+  });
+};
+
 // Clear existing tasks
 const clearTaskList = () => {
   const ulElement = task.querySelector('.card-sub');
@@ -87,6 +93,7 @@ const taskList = () => {
       const taskId = parseInt(liElement.dataset.taskId, 10);
       tasks.remove(taskId);
       clearTaskList();
+      updateTaskIds();
       taskList();
     });
 
@@ -154,6 +161,7 @@ const clearCompletedTasks = () => {
   // Update the tasks array
   tasks.tasks = updatedTasks;
   clearTaskList();
+  updateTaskIds();
   taskList();
   localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
 };
