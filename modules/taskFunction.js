@@ -27,7 +27,7 @@ function editTaskDescription(taskId, liElement, taskList) {
     inputElement.value = taskDescriptionElement.textContent;
 
     inputElement.addEventListener('keydown', (event) => {
-      if (event.keyCode === 13) {
+      if (event.key === 'Enter') {
         const newDescription = inputElement.value.trim();
         const success = tasks.editDescription(taskId, newDescription);
         if (success) {
@@ -109,12 +109,14 @@ const addTask = () => {
       clearTaskList();
       taskList();
       addNew.value = '';
+
+      localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
     }
   }
 };
 
 addNew.addEventListener('keydown', (event) => {
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     addTask();
   }
 });
