@@ -11,6 +11,13 @@ ulElement.classList.add('card-sub');
 
 const tasks = new TODoTasks();
 
+const loadTasksFromLocalStorage = () => {
+  const storedTasks = localStorage.getItem('tasks');
+  if (storedTasks) {
+    tasks.tasks = JSON.parse(storedTasks);
+  }
+};
+
 // Clear existing tasks
 const clearTaskList = () => {
   const ulElement = task.querySelector('.card-sub');
@@ -63,7 +70,11 @@ const taskList = () => {
     });
 
     checkbox.addEventListener('change', () => {
-      if (checkbox.checked) {
+      const taskId = parseInt(liElement.dataset.taskId, 10);
+      const completed = checkbox.checked;
+      tasks.updateCompletionStatus(taskId, completed); // Call a new method to update the completion status
+      localStorage.setItem('tasks', JSON.stringify(tasks.tasks)); // Update the local storage
+      if (completed) {
         trashIcon.classList.remove('hide');
         threeDotsIcon.classList.add('hide');
       } else {
@@ -71,7 +82,7 @@ const taskList = () => {
         threeDotsIcon.classList.remove('hide');
       }
     });
-
+    
     trashIcon.addEventListener('click', () => {
       const taskId = parseInt(liElement.dataset.taskId, 10);
       tasks.remove(taskId);
@@ -85,6 +96,9 @@ const taskList = () => {
   task.appendChild(ulElement);
   localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
 };
+
+loadTasksFromLocalStorage();
+taskList();
 
 const buttonClear = document.createElement('button');
 buttonClear.type = 'button';
@@ -122,6 +136,7 @@ addNew.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
+  loadTasksFromLocalStorage();
   taskList();
 });
 
