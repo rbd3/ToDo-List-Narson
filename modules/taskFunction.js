@@ -72,8 +72,8 @@ const taskList = () => {
     checkbox.addEventListener('change', () => {
       const taskId = parseInt(liElement.dataset.taskId, 10);
       const completed = checkbox.checked;
-      tasks.updateCompletionStatus(taskId, completed); // Call a new method to update the completion status
-      localStorage.setItem('tasks', JSON.stringify(tasks.tasks)); // Update the local storage
+      tasks.updateCompletionStatus(taskId, completed);
+      localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
       if (completed) {
         trashIcon.classList.remove('hide');
         threeDotsIcon.classList.add('hide');
@@ -123,7 +123,6 @@ const addTask = () => {
       clearTaskList();
       taskList();
       addNew.value = '';
-
       localStorage.setItem('tasks', JSON.stringify(tasks.tasks));
     }
   }
