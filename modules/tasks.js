@@ -9,6 +9,8 @@ export default class TODoTasks {
     this.tasks.push(task);
   }
 
+// remove task 
+
   remove(id) {
     this.tasks = this.tasks.filter((item) => item.id !== id);
     this.tasks.forEach((item, index) => {
